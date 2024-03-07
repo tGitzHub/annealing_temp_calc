@@ -25,6 +25,11 @@ fn main() {
     let tm_m145l = calc_from_strings(primer_m145l, reference_m145l);
     println!("Annealing temperature (Tm) for primer M145L: {:.2} °C", tm_m145l);
     
+    let primer_m145i = "cgagtactggcagcggattaaccgcgcct";
+    let reference_m145i = "CGAGTACTGGCAGCGGATGAACCGCGCCT";
+
+    let tm_m145i = calc_from_strings(primer_m145i, reference_m145i);
+    println!("Annealing temperature (Tm) for primer M145I: {:.2} °C", tm_m145i);
     /*
     let mismatch_percentage = calculate_mismatch_percentage(primer_p4, second_binding_site_p4);
     let mismatch_percentage_2 = calculate_mismatch_percentage(primer_0, second_binding_site);
