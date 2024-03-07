@@ -39,16 +39,20 @@ fn main() {
 }
 
 fn calculate_gc_content(chain: &str) -> f64 {
+    let chain_lower = chain.to_lowercase();
     // Count the occurrences of 'G' and 'C' in the chain
-    let gc_count = chain.chars().filter(|&c| c == 'G' || c == 'C' || c == 'g' || c == 'c').count() as f64;
+    let gc_count = chain_lower.chars().filter(|&c| c == 'g' || c == 'c').count() as f64;
 
     // Calculate the percentage of 'G' and 'C' in the chain
     (gc_count / chain.len() as f64) * 100.0
 }
 
 fn calculate_mismatch_percentage(chain1: &str, chain2: &str) -> f64 {
+    let chain1_lower = chain1.to_lowercase();
+    let chain2_lower = chain2.to_lowercase();
+
     // Count the number of mismatched positions
-    let mismatch_count = chain1.chars().zip(chain2.chars()).filter(|&(c1, c2)| c1.to_uppercase().next().unwrap() != c2.to_uppercase().next().unwrap()).count() as f64;
+    let mismatch_count = chain1_lower.chars().zip(chain2_lower.chars()).filter(|&(c1, c2)| c1 != c2).count() as f64;
 
     // Calculate the percentage of mismatch
     (mismatch_count / chain1.len() as f64) * 100.0 
